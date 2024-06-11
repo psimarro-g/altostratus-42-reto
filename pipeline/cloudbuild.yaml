@@ -38,7 +38,5 @@ steps:
       --set-env-vars "MONGOURI=mongodb+srv://psimarro:psimarro@cluster0.5gdqytz.mongodb.net/?retryWrites=true&w=majority&appName=psimarro"
       --project=gke-alt-test
 
-options:
-  logging: CLOUD_LOGGING_ONLY
 
 #[END cloudbuild]
