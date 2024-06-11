@@ -12,10 +12,20 @@
 
 package main
 
-import ()
+import (
+	"altostratus-42-reto/configs"
+	"altostratus-42-reto/routes"
+	"github.com/labstack/echo/v4"
+)
 
 func main() {
 	e := echo.New()
+	//run database
+	configs.ConnectDB()
+
+	//routes
+	routes.AsteroidRoute(e)
+
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(200, &echo.Map{"data": "Hello, World!"})
 	})
