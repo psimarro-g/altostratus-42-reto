@@ -10,10 +10,11 @@ func AsteroidRoute(e *echo.Echo) {
 	api := e.Group("/api/v1", serverHeader)
 
 	// Asteroid routes
-	//api.GET("/asteroides/:id", controllers.GetAsteroid)
+	api.GET("/asteroides/:id", controllers.GetAsteroid)
+	api.GET("/asteroides", controllers.GetAsteroids)
 	api.POST("/asteroides", controllers.CreateAsteroid)
-	//api.PUT("/asteroides/:id", controllers.UpdateAsteroid)
-	//api.DELETE("/asteroides/:id", controllers.DeleteAsteroid)
+	api.PUT("/asteroides/:id", controllers.UpdateAsteroid)
+	api.DELETE("/asteroides/:id", controllers.DeleteAsteroid)
 }
 
 func serverHeader(next echo.HandlerFunc) echo.HandlerFunc {
