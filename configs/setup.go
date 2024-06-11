@@ -3,15 +3,23 @@ package configs
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+var ENV string = "local"
+
 func ConnectDB() *mongo.Client {
 	// Connect to MongoDB
-	URI := EnvMongoURI()
+	value := os.Getenv("ENV")
+	if value == "dev" {
+		ENV = "dev"
+	}
+
+	URI := EnvMongoURI(ENV)
 	client, err := mongo.NewClient(options.Client().ApplyURI(URI))
 	if err != nil {
 		log.Fatal(err)
