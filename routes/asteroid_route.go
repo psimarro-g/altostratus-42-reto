@@ -13,7 +13,7 @@ func AsteroidRoute(e *echo.Echo) {
 	api.GET("/asteroides/:id", controllers.GetAsteroid)
 	api.GET("/asteroides", controllers.GetAsteroids)
 	api.POST("/asteroides", controllers.CreateAsteroid)
-	api.PUT("/asteroides/:id", controllers.UpdateAsteroid)
+	api.PATCH("/asteroides/:id", controllers.UpdateAsteroid)
 	api.DELETE("/asteroides/:id", controllers.DeleteAsteroid)
 }
 

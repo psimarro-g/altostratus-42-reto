@@ -1,4 +1,4 @@
-#start cloudbuild
+#[START cloudbuild]
 
 steps:
 
@@ -13,21 +13,8 @@ steps:
       echo "=============Building Docker image=============="
       echo "========== At project: ${PROJECT_ID} ==========="
       echo "================================================"
-      docker build -t europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto-go:$COMMIT_SHA .
-      docker push europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto-go:$COMMIT_SHA
-
-#deploy container image
-- id: 'Deploy Cloud Run'
-  name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'sh'
-  args:
-    - '-c'
-    - |
-      echo ""
-      echo "=============Deploying Docker image=============="
-      echo "========== At project: ${PROJECT_ID} ==========="
-      echo "================================================"
-      gcloud run deploy altostratus-42-reto-go --image=europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto-go:$COMMIT_SHA --platform=managed --region=europe-west1 --allow-unauthenticated --quiet
+      docker build -t europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto/altostratus-42-reto-go:$COMMIT_SHA .
+      docker push europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto/altostratus-42-reto-go:$COMMIT_SHA
 
 #deploy container image
 - id: 'Deploy Cloud Run'
@@ -43,7 +30,7 @@ steps:
       echo ""
 
       gcloud run deploy altostratus-42-reto-go \
-      --image=europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto-go:$COMMIT_SHA \
+      --image=europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto/altostratus-42-reto-go:$COMMIT_SHA \
       --region=europe-west1 \
       --platform=managed \
       --port=8080 \
