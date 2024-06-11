@@ -23,20 +23,20 @@ steps:
   args:
     - '-c'
     - |
-      echo ""
-      echo "=============Deploying Cloud Run=============="
-      echo "========== At project: ${PROJECT_ID} ==========="
-      echo "================================================"
-      echo ""
+        echo ""
+        echo "=============Deploying Cloud Run=============="
+        echo "========== At project: ${PROJECT_ID} ==========="
+        echo "================================================"
+        echo ""
 
-      gcloud run deploy altostratus-42-reto-go \
-      --image=europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto/altostratus-42-reto-go:$COMMIT_SHA \
-      --region=europe-west1 \
-      --platform=managed \
-      --port=8080 \
-      --set-env-vars "ENV=dev" \
-      --set-env-vars "MONGOURI=mongodb+srv://psimarro:psimarro@cluster0.5gdqytz.mongodb.net/?retryWrites=true&w=majority&appName=psimarro"
-      --project=gke-alt-test
+        gcloud run deploy altostratus-42-reto-go \
+        --image=europe-west1-docker.pkg.dev/$PROJECT_ID/altostratus-42-reto/altostratus-42-reto-go:$COMMIT_SHA \
+        --region=europe-west1 \
+        --platform=managed \
+        --port=8080 \
+        --set-env-vars "ENV=dev" \
+        --set-env-vars "MONGOURI=mongodb+srv://psimarro:psimarro@cluster0.5gdqytz.mongodb.net/?retryWrites=true&w=majority&appName=psimarro"
+        --project=gke-alt-test
 
 options:
   logging: CLOUD_LOGGING_ONLY
